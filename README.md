@@ -49,6 +49,6 @@ To try the app:
 4.  ### Librabies
 
     1. **Capacitor**
-    2. **RecordRtc**
+    2. **Capacitor-Voice-Recorder**
 
     **[⬆ Back to Top](#table-of-contents)**
