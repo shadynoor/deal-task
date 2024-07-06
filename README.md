@@ -11,7 +11,7 @@
 
 1. ### Technologies Used
 
-App built using Angular-Ionic using Capacitor and recordRtc
+App built using Angular-Ionic using Capacitor and Capacitor Voice Recorder
 
 2. ### Installation
 
