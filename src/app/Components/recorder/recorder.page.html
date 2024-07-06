@@ -1,0 +1,16 @@
+<div class="recorder-container">
+  @if (!recording) {
+  <h3>Press and hold to record</h3>
+  }@else {
+  <h3>{{durationText}}</h3>
+  }
+  <!-- This way is native JS and also works fine -->
+  <!-- <ion-button shape="round" (touchstart)="mousedown()" (touchend)="mouseup()"> -->
+  <ion-button shape="round" #recordBtn>
+    @if (recording) {
+    <ion-icon slot="icon-only" name="stop-outline"></ion-icon>
+    }@else {
+    <ion-icon slot="icon-only" name="mic-outline"></ion-icon>
+    }
+  </ion-button>
+</div>

@@ -1,0 +1,61 @@
+<app-header [title]="'Documentation'"></app-header>
+
+<ion-content>
+  <div class="docs">
+    <h3>Form Content</h3>
+    <ul>
+      <li>Avatar Photo with Camera or upload from Gallery</li>
+      <li>Input text for user name with minlength 3 and maxlength 10</li>
+      <li>
+        Voice Recorder for the user to record an introduction about himslef
+      </li>
+      <li>Audio Player for recorded audio</li>
+      <li>Submit Button to check form validity and submit</li>
+    </ul>
+
+    <h4>Notes</h4>
+    <ol>
+      <li>
+        After Build For Android you have to add android record permission in
+        AndroidManifst.xml, it will be found in assets.
+      </li>
+
+      <li>
+        For IOS Build you have to add NSMicrophoneUsageDescription In info.plist
+      </li>
+
+      <li>
+        This already tested on Web and Android, but not IOS cuz I don't have Mac
+        OS
+      </li>
+
+      <li>Data Page is just to preview all stored data</li>
+      <li>
+        Form Page restore last saved data and it will fetch it once the
+        connection is restored
+      </li>
+      <li>
+        To update user photo click on the image it self and it shall open action
+        sheet to select camera or upload from gallery
+      </li>
+      <li>
+        Images converted to base64 to be saved in local storage and to preview
+      </li>
+      <li>Name input and image are required</li>
+      <li>Sound Recorder is required and have a preview after record</li>
+      <li>
+        Record converted to base64 to be saved in local storage and to preview
+      </li>
+      <li>After stop the record it stops mic stream</li>
+      <li>Any error appear as a toast message</li>
+      <li>
+        All data will be saved in local storage if the whole data is valid
+      </li>
+      <li>lazy loading technique implemented</li>
+
+      <li>SSR implemented</li>
+    </ol>
+
+    <ion-button routerLink="/tab2">Go To The Form</ion-button>
+  </div>
+</ion-content>

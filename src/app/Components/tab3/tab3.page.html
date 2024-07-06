@@ -1,0 +1,39 @@
+<app-header [title]="'History'"></app-header>
+
+<ion-content>
+  <ion-list lines="none">
+    @for (item of myData; let i = $index; track i) {
+
+    <ion-item>
+      <div class="element">
+        <div class="info">
+          <ion-avatar>
+            <img alt="Silhouette of a person's head" [src]="item.image" />
+          </ion-avatar>
+          <h3>{{item.name}}</h3>
+        </div>
+        @if (item.audio) {
+        <audio controls [src]="item.audio">
+          Your browser does not support the audio element.
+        </audio>
+        }
+
+        <div class="delete" [id]="'open-action-sheet'+i">
+          <ion-icon name="trash-outline"></ion-icon>
+        </div>
+        <ion-action-sheet
+          [trigger]="'open-action-sheet'+i"
+          header="Are you sure you want to delete?"
+          [buttons]="actionSheetButtons"
+          (didDismiss)="onDidDismiss($event,i)"
+        ></ion-action-sheet>
+      </div>
+    </ion-item>
+    }@empty {
+    <div class="empty">
+      <ion-icon name="sad-outline"></ion-icon>
+      <h3>There's No Data Stored Yet</h3>
+    </div>
+    }
+  </ion-list>
+</ion-content>

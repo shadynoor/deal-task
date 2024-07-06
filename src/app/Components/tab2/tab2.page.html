@@ -1,0 +1,99 @@
+<app-header [title]="'Form'"></app-header>
+
+<ion-content>
+  <div class="tab2-container">
+    <div class="flex profile" id="open-action-sheet">
+      <ion-avatar>
+        @if (photoService.photo && photoService.photo.webviewPath ) {
+        <img
+          class="user-photo"
+          alt="user-image"
+          [src]="photoService.photo.webviewPath "
+        />
+        }@else {
+        <img
+          class="user-photo"
+          alt="Default"
+          [src]="'assets/imgs/default-avatar.png' "
+        />
+        }
+      </ion-avatar>
+
+      <div class="icon">
+        <!-- <ion-icon name="pencil-outline"></ion-icon> -->
+        <img src="assets/imgs/edit.svg" alt="edit" />
+      </div>
+    </div>
+
+    <div class="user-info">
+      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <label class="label" for="user-name">Name</label>
+        <ion-input
+          id="user-name"
+          formControlName="name"
+          lines="none"
+          maxlength="10"
+        ></ion-input>
+
+        <input
+          type="file"
+          required
+          (change)="detectChange($event)"
+          hidden
+          #imgUploader
+          formControlName="image"
+          accept="image/*"
+        />
+      </form>
+
+      <div class="flex record-input">
+        <h3>Record An Introduction About Yourself For Your Visitors.</h3>
+        @if (currentAudio) {
+        <h4>Your Record</h4>
+        <div class="audio-player">
+          <audio controls [src]="currentAudio"></audio>
+          <div class="delete" [id]="currentAudio">
+            <ion-icon name="trash-outline"></ion-icon>
+          </div>
+
+          <ion-action-sheet
+            [trigger]="currentAudio"
+            header="Are you sure you want to delete?"
+            [buttons]="deleteActionSheetButtons"
+            (didDismiss)="deleteBottomSheet($event)"
+          ></ion-action-sheet>
+        </div>
+        } @if (!currentAudio) {
+        <app-recorder (stopRecord)="onStopRecord($event)"></app-recorder>
+        }
+      </div>
+
+      <ion-button class="submit" (click)="onSubmit()"> Submit </ion-button>
+    </div>
+
+    <ion-action-sheet
+      trigger="open-action-sheet"
+      header="Update Your Avatar"
+      [buttons]="actionSheetButtons"
+      (didDismiss)="onDidDismiss($event)"
+    ></ion-action-sheet>
+
+    <ion-toast
+      [isOpen]="isToastOpen"
+      [message]="errorMsg"
+      [duration]="3000"
+      position="bottom"
+      color="danger"
+      (didDismiss)="isToastOpen = false"
+    ></ion-toast>
+
+    <ion-toast
+      [isOpen]="formSent"
+      (didDismiss)="formSent = false"
+      [message]="successMsg"
+      [duration]="3000"
+      position="bottom"
+      color="success"
+    ></ion-toast>
+  </div>
+</ion-content>

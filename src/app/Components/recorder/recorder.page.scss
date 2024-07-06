@@ -1,0 +1,44 @@
+.recorder-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  ion-button {
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-basis: 25%;
+    max-width: 2.5rem;
+    ion-icon {
+      font-size: 1.25rem;
+    }
+  }
+
+  .timer {
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: red;
+      left: -30px;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
+      -webkit-animation: changeOpacity 2s infinite;
+      animation: changeOpacity 2s infinite;
+    }
+  }
+}
+@keyframes changeOpacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

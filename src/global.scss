@@ -34,4 +34,73 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+// @import "@ionic/angular/css/palettes/dark.system.css";
+
+// Route Animation Using CSS, Can also be used using animations in @Component Decorator using transitions and queries
+@keyframes enter {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(50px);
+    -moz-transform: translateX(50px);
+    -ms-transform: translateX(50px);
+    -o-transform: translateX(50px);
+    transform: translateX(50px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes exit {
+  0% {
+    opacity: 1;
+    // transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    // transform: scale(0.6);
+  }
+}
+
+::view-transition-old(root) {
+  -webkit-animation: exit 0.2s ease 0s 1 normal forwards;
+  animation: exit 0.2s ease 0s 1 normal forwards;
+}
+
+::view-transition-new(root) {
+  -webkit-animation: enter 0.2s ease 0s 1 normal forwards;
+  animation: enter 0.2s ease 0s 1 normal forwards;
+}
+
+ion-button {
+  --background: #0078c5 !important;
+}
+
+// Spinner
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  background-color: #fff;
+  color: #0078c5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ion-spinner {
+    width: 100px;
+    height: 100px;
+  }
+}
+ion-tab-button.tab-selected {
+  --color: red !important;
+}
